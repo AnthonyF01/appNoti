@@ -18,7 +18,7 @@
   <ion-fab right bottom>
     <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
     <ion-fab-list side="left">
-      <!-- <button ion-fab (click)="logout()"><ion-icon name="log-out"></ion-icon></button> -->
+      <button ion-fab (click)="logout()"><ion-icon name="log-out"></ion-icon></button>
       <button ion-fab (click)="openPage('SettingsPage')"><ion-icon name="contact"></ion-icon></button>
     </ion-fab-list>
   </ion-fab>
@@ -30,7 +30,7 @@
   </ion-row>
 
   <div padding>
-    <ion-grid>
+    <!-- <ion-grid>
       <ion-row>
         <ion-col col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3>
           <div [hidden]="checkAccess">
@@ -45,13 +45,12 @@
               </ion-card-content>
             </ion-card>
           </div>
-          </ion-col>
+        </ion-col>
         <ion-col col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3>
           <div [hidden]="checkAccess">
             <ion-card (click)="showMedidas()">
               <ion-card id="rb" style="text-align: center;">
                 <img id="rbtn" src="assets/imgs/file-pdf-download.png"/>
-                <!-- <ion-icon name="document"></ion-icon> -->
               </ion-card>
               <ion-card-content style="margin-top: 10px;">
                 <p class="title">Medida de Protección</p>
@@ -60,11 +59,11 @@
           </div>
         </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-grid> -->
     <ion-grid>
       <ion-row>
         <ion-col col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3>
-          <div [hidden]="!checkAccess">
+          <!-- <div [hidden]="!checkAccess"> -->
             <ion-card (click)="openPage('NoTabsPage')">
               <ion-card id="rb">
                 <img id="rbtn" src="assets/imgs/file_search.png"/>
@@ -73,20 +72,19 @@
                 <p class="title">Expedientes(DNI)</p>
               </ion-card-content>
             </ion-card>
-          </div>
+          <!-- </div> -->
         </ion-col>
         <ion-col col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3>
-          <div [hidden]="!checkAccess">
+          <!-- <div [hidden]="!checkAccess"> -->
             <ion-card (click)="openPage('ListNotificationPage')">
               <ion-card id="rb" style="text-align: center;">
-                <!-- <img id="rbtn" src="assets/imgs/notification.png"/> -->
                 <ion-icon style="color: #555;" name="notifications-outline"></ion-icon>
               </ion-card>
               <ion-card-content style="margin-top: 10px;">
                 <p class="title">Notificaciones</p>
               </ion-card-content>
             </ion-card>
-          </div>
+          <!-- </div> -->
         </ion-col>
       </ion-row>
     </ion-grid>

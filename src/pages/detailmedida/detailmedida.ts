@@ -3,10 +3,10 @@ import { IonicPage, NavController, NavParams, LoadingController, Platform } from
 
 import { Service } from '../../settings/Laravel';
 
-import { File } from '@ionic-native/File/ngx';
-import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer/ngx';
-import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { File } from '@ionic-native/File';
+import { FileOpener } from '@ionic-native/file-opener';
+import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer';
+import { FileTransfer } from '@ionic-native/file-transfer';
 
 /**
  * Generated class for the DetailmedidaPage page.
@@ -57,10 +57,12 @@ export class DetailmedidaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailmedidaPage');
+    this.downloadPDF();
     this.showDetails(this.value);
   }
 
   showDetails (search:string) {
+    console.log('showDetails');
     this.loading = this.loadingCtrl.create({content: 'Espere ...'});
     this.loading.present();
     this.oficio = this.value.oficio;
@@ -77,9 +79,12 @@ export class DetailmedidaPage {
   }
 
   downloadPDF() {
-    let downloadUrl = 'https://devdactic.com/html/5-simple-hacks-LBT.pdf';
-    let path = this.file.dataDirectory;
+    console.log("downloadUrl");
+    // let downloadUrl = 'https://devdactic.com/html/5-simple-hacks-LBT.pdf';
+    // console.log('error');
+    /*let path = this.file.dataDirectory;
     const transfer = this.ft.create();
+    console.log('File is downloaded');
 
     transfer.download(downloadUrl, path + 'myfile.pdf').then(entry => {
       let url = entry.toURL();
@@ -91,7 +96,7 @@ export class DetailmedidaPage {
           .then(() => console.log('File is opened'))
           .catch(e => console.log('Error opening file', e));
       // }
-    });
+    });*/
   }
 
 }

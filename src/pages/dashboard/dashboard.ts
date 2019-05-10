@@ -60,7 +60,8 @@ export class DashboardPage {
   // se ejecuta cuando la pagina esta a punto de entrar y se convierte en la pagina activa
   ionViewWillEnter(){  
     // this.checkAccess();
-    this.checkAccessType()
+
+    /*this.checkAccessType()
       .then( (response) => {
         this.checkAccess = response;
         this.getCurrentPosition();
@@ -86,7 +87,13 @@ export class DashboardPage {
       })
       .catch(error => {
         console.log(error);
-      });
+      });*/
+
+
+    this.loading.dismiss();    
+    // no es necesario saber la ubicacion
+    // this.getCurrentPosition();
+
   }
 
   async checkAccessType (){

@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
+import { DocumentViewer, DocumentViewerOptions } from '@ionic-native/document-viewer';
+
 import { DenunciaProvider } from '../../providers/denuncia/denuncia';
 
 /**
@@ -36,12 +41,17 @@ export class DetailsPage {
     private loadingCtrl: LoadingController,
     private denunciaService: DenunciaProvider,
     public alertCtrl: AlertController,
+    public transfer: FileTransfer,
+    public file: File,
+    private ft: FileTransfer, 
+    private fileOpener: FileOpener, 
+    private document: DocumentViewer,
   ) {
     this.value = navParams.get('item');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailsPage');
+    console.log('ionViewDidLoad DetailsPagess');
     this.showDetails(this.value);
   }
 
@@ -69,6 +79,38 @@ export class DetailsPage {
       console.log("error: "+err);
       alert.present();
     });
+  }
+
+  downloadPDF() {
+    let downloadUrl = 'https://devdactic.com/html/5-simple-hacks-LBT.pdf';
+    let path = this.file.dataDirectory;
+    const transfer = this.ft.create();
+
+    transfer.download(downloadUrl, path + '5-simple-hacks-LBT.pdf').then(entry => {
+      console.log('download complete: ' + entry.toURL());
+
+      let url = entry.toURL();
+
+      // if (this.platform.is('ios')) {
+      //   this.document.viewDocument(url, 'application/pdf', {});
+      // } else {
+        this.fileOpener.open(url, 'application/pdf')
+          .then(() => console.log('File is opened'))
+          .catch(e => console.log('Error opening file', e));
+      // }
+    }, (error) => {
+      console.log('download ERROR: ' + error);
+    });
+
+    /*const fileTransfer: FileTransferObject = this.transfer.create();
+    const url = 'https://devdactic.com/html/5-simple-hacks-LBT.pdf';
+    console.log(url);
+    fileTransfer.download(url, this.file.dataDirectory + '5-simple-hacks-LBT.pdf').then((entry) => {
+      console.log('download complete: ' + entry.toURL());
+    }, (error) => {
+      console.log('download ERROR: ' + error);
+    });*/
+
   }
 
 }

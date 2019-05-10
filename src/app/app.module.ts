@@ -40,10 +40,10 @@ import { DetailmedidaPage } from '../pages/detailmedida/detailmedida';
 // import { FileTransfer, FileTransferObject  } from '@ionic-native/file-transfer';
 // import { DocumentViewer } from '@ionic-native/document-viewer';
 
-import { File } from '@ionic-native/File/ngx';
-import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { FileTransfer } from '@ionic-native/file-transfer/ngx';
-import { DocumentViewer } from '@ionic-native/document-viewer/ngx';
+import { File } from '@ionic-native/file';
+import { FileOpener } from '@ionic-native/file-opener';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { DocumentViewer } from '@ionic-native/document-viewer';
 
 /*
 * Ejecutar: 
@@ -83,6 +83,10 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     DetailmedidaPage,
   ],
   providers: [
+    File,
+    FileOpener,
+    FileTransfer,
+    DocumentViewer,
     Geolocation,
     GoogleMaps,
     Geocoder,
@@ -93,10 +97,6 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions';
     SplashScreen,
     NativePageTransitions,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    File,
-    FileOpener,
-    FileTransfer,
-    DocumentViewer,
     AuthProvider,
     UserProvider,
     NotificationProvider,

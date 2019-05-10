@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="inverse">
-    <ion-title text-center>AppPanic</ion-title>
+    <ion-title text-center>App Expedientes</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,7 +9,7 @@
 
 <ion-content>
   
-  <ion-card box-shadow>
+  <!-- <ion-card box-shadow>
     <ion-card-content>
       <ion-list>
         <ion-item>
@@ -21,9 +21,9 @@
         </ion-item>
       </ion-list>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 
-  <div [hidden]="!flag">
+  <!-- <div [hidden]="!flag"> -->
     <ion-card box-shadow>
       <ion-card-content>
         <div class="form">
@@ -41,9 +41,9 @@
         </div>
       </ion-card-content>
     </ion-card>
-  </div>
+  <!-- </div> -->
 
-  <div [hidden]="flag">
+  <!-- <div [hidden]="flag">
     <ion-card box-shadow>
       <ion-card-content>
         <div class="form">
@@ -62,23 +62,12 @@
           <ion-item>
             <ion-input [disabled]="!isenabled" type="string" placeholder="Nombre" [(ngModel)]="formRegister.nombre"></ion-input>
           </ion-item>
-          <!-- <ion-item>
-            <ion-select placeholder="Departamento" [(ngModel)]="formRegister.tbldepartamento_id">
-              <ion-option *ngFor="let department of departments" [value]="department.value">{{ department.name }}</ion-option>
-            </ion-select>
-          </ion-item> -->
           <ion-item>
             <ion-input [disabled]="!isenabled" type="string" placeholder="Usuario" [(ngModel)]="formRegister.name"></ion-input>
           </ion-item>
-          <!-- <ion-item>
-            <ion-input [disabled]="!isenabled" type="email" placeholder="Email" [(ngModel)]="formRegister.email"></ion-input>
-          </ion-item> -->
           <ion-item>
             <ion-input [disabled]="!isenabled" type="password" placeholder="Contraseña" [(ngModel)]="formRegister.password"></ion-input>
           </ion-item>
-          <!-- <ion-item>
-            <ion-input [disabled]="!isenabled" type="password" placeholder="Repetir Contraseña" [(ngModel)]="formRegister.password_confirmation"></ion-input>
-          </ion-item> -->
           <ion-row style="margin: 5px 0px;">
             <button ion-button box-shadow icon-only (click)="showInfo()" style="cursor: pointer; display: inline-block;position: absolute;margin: 0;">
               <ion-icon name="information-circle"></ion-icon>
@@ -90,7 +79,7 @@
         </div>
       </ion-card-content>
     </ion-card>
-  </div>
+  </div> -->
 
   <!-- <ion-card box-shadow>
     <ion-card-content>

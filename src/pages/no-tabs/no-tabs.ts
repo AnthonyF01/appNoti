@@ -22,10 +22,16 @@ export class NoTabsPage {
   loading: any;
 
   flag:any = false;
+  flag1:any = false;
+  flag2:any = false;
+  flag3:any = false;
+
+  param:any = false;
 
   total: any = 0;
 
   expedientes: Array<{expediente:string, calificacion:string}>;
+  victimas: Array<{nombre:string, apellido:string, nro_doc:string}>;
 
   public search: string;
 
@@ -55,23 +61,38 @@ export class NoTabsPage {
     console.log('ionViewDidLoad NoTabsPage');
   }
   
-  findExpediente (search:string) {
+  // puede recibir como parametro el expediente o dni (agregado ultimamente)
+  findExpedienteDNI (search:string) {
     this.loading = this.loadingCtrl.create({content: 'Espere ...'});
     this.loading.present();
-    console.log('finding expediente');
-    this.denunciaService.findExpediente(search)
+    console.log('finding expediente o dni');
+    this.denunciaService.findExpediente(search, this.param)
     .then((response: any) => {
       this.expedientes = [];
-      this.total = response.denuncia.length;
-      if (response.denuncia.length > 0) {
-        console.log(response.denuncia[0].expediente);
+      this.victimas = [];
+      console.log("total");
+      this.total = (typeof response.denuncia !== 'undefined' && response.denuncia.length > 0) ? response.denuncia.length : ( (typeof response.victima !== 'undefined' && response.victima.length > 0) ? response.victima.length : 0 ) ;
+      // victima
+      if ( typeof response.victima !== 'undefined' && response.victima.length > 0) {
+        console.log("victima"+response.victima[0].nro_doc);
+        this.flag1 = true;
+        for (let index = 0; index < response.victima.length; index++) {
+          this.victimas.push({nombre: response.victima[index].nombre, apellido: response.victima[index].apellido, nro_doc: response.victima[index].nro_doc});        
+        }
+      }else {
+        this.flag = false;
+      }
+      //expediente
+      if ( typeof response.denuncia !== 'undefined' && response.denuncia.length > 0) {
+        console.log("denuncia"+response.denuncia[0].expediente);
+        for (let index = 0; index < response.denuncia.length; index++) {
+          this.expedientes.push({expediente: response.denuncia[index].expediente,calificacion: response.denuncia[index].calificacion});        
+        }
         this.flag = true;
       }else {
         this.flag = false;
       }
-      for (let index = 0; index < response.denuncia.length; index++) {
-        this.expedientes.push({expediente: response.denuncia[index].expediente,calificacion: response.denuncia[index].calificacion});        
-      }
+
       console.log(this.expedientes);
       this.loading.dismiss();
       // let alert = this.alertCtrl.create({ title: 'Info', message: response.denuncia, buttons: ['Ok'] });
@@ -97,6 +118,14 @@ export class NoTabsPage {
 
   showPwd() {
     console.log("show pwd");
+  }
+
+  onChange(selectedValue: any){
+    if (selectedValue == 1) {
+      this.param = true; // vct
+    }else{
+      this.param = false; // exp
+    }
   }
 
 }

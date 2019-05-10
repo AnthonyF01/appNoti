@@ -10,13 +10,17 @@ export class DenunciaProvider {
   constructor(public http: HttpClient, private storage: Storage) {
   }
 
-  async findExpediente (search:string) 
+  async findExpediente (search:string, param:boolean) 
   {
     let auth: any = await this.storage.get('auth');
     let headers: HttpHeaders = new HttpHeaders({
       'Authorization': `Bearer ${auth.access_token}`,
     })
-    return this.http.get(`${Service.apiUrl}/denuncia/search/${search}`, { headers }).toPromise()
+    if (param) {
+      return this.http.get(`${Service.apiUrl}/denuncia/searchDNI/${search}`, { headers }).toPromise()      
+    }else{
+      return this.http.get(`${Service.apiUrl}/denuncia/search/${search}`, { headers }).toPromise()
+    }
   }
 
   async findVictima (search:string) 

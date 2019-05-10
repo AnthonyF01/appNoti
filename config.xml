@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget android-versionCode="1" id="com.scpjfamilia.nuevafcm" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Ley 30364</name>
-    <description>Boton de panico.</description>
+    <name>App Notificaciones</name>
+    <description>App Notificaciones.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
@@ -90,15 +90,15 @@
     <plugin name="cordova-plugin-nativegeocoder" spec="^3.1.2" />
     <plugin name="cordova-sqlite-storage" spec="2.5.2" />
     <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="2.4.0" />
-    <plugin name="cordova-android-support-gradle-release" spec="^2.0.1">
-        <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
-    </plugin>
     <plugin name="cordova-plugin-network-information" spec="2.0.1" />
-    <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
     <plugin name="cordova-plugin-file" spec="6.0.1" />
-    <plugin name="cordova-plugin-document-viewer" spec="0.9.10" />
     <plugin name="cordova-plugin-file-opener2" spec="2.1.4">
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
+    </plugin>
+    <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
+    <plugin name="cordova-plugin-document-viewer" spec="0.9.10" />
+    <plugin name="cordova-android-support-gradle-release" spec="2.1.0">
+        <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
     </plugin>
     <engine name="browser" spec="5.0.4" />
     <engine name="android" spec="7.1.4" />

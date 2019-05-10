@@ -22,6 +22,16 @@
 
       <ion-grid class="src">
         <ion-row>
+          <ion-col col-12>
+            <ion-list>
+              <ion-item>
+                <ion-select [(ngModel)]="acceso" (ionChange)="onChange($event)">
+                  <ion-option value="0" selected>Expediente</ion-option>
+                  <ion-option value="1">Víctima (Nombre-DNI)</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-col>
           <ion-col col-10>
             <ion-list>
               <ion-item>
@@ -40,7 +50,7 @@
             </ion-list>
           </ion-col>
           <ion-col col-2>
-            <button id='search' (click)="findExpediente(search)"><ion-icon name="search"></ion-icon></button>
+            <button id='search' (click)="findExpedienteDNI(search)"><ion-icon name="search"></ion-icon></button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -102,18 +112,48 @@
         </ion-row>
       </ion-grid>
 
-      <div [hidden]="!flag">
-        <ion-list>
-          <ion-item *ngFor="let expediente of expedientes" (click)="showDetails(expediente.expediente)" style="cursor: pointer;">
-            {{ expediente.expediente }}
-          </ion-item>
-        </ion-list>
+      <div [hidden]="flag1">
+        
+        <div [hidden]="!flag">
+          <ion-list>
+            <ion-item *ngFor="let expediente of expedientes" (click)="showDetails(expediente.expediente)" style="cursor: pointer;">
+              {{ expediente.expediente }}
+            </ion-item>
+          </ion-list>
+        </div>
+
+      </div>
+
+      <div [hidden]="flag3">
+        <div [hidden]="flag1">
+          <div [hidden]="flag">
+            <ion-list>
+              <ion-item>No se encontraron resultados</ion-item>
+            </ion-list>
+          </div>
+        </div>
       </div>
 
       <div [hidden]="flag">
-        <ion-list>
-          <ion-item>No se encontraron resultados</ion-item>
-        </ion-list>
+
+        <div [hidden]="!flag1">
+          <ion-list>
+            <ion-item *ngFor="let victima of victimas" (click)="findExpedienteDNI(victima.nro_doc)" style="cursor: pointer;">
+              {{ victima.nombre }} {{ victima.apellido }}
+            </ion-item>
+          </ion-list>
+        </div>
+      
+      </div>
+
+      <div [hidden]="flag2">
+        <div [hidden]="flag">
+          <div [hidden]="flag1">
+            <ion-list>
+              <ion-item>No se encontraron resultados</ion-item>
+            </ion-list>
+          </div>
+        </div>
       </div>
 
 
